@@ -41,7 +41,20 @@ const generateThemeObject = (colors: any, mapping: any, invert = false) => {
 const lightTheme = generateThemeObject(colors, shadeMapping);
 const darkTheme = generateThemeObject(colors, shadeMapping, true);
 
+const themes = {
+  light: {
+    ...lightTheme,
+    white: '#ffffff'
+  },
+  dark: {
+    ...darkTheme,
+    white: colors.gray["950"],
+    black: colors.gray["50"]
+  }
+}
+
 const config: Config = {
+  darkModer: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -56,7 +69,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [createThemes(themes)],
 };
 
 export default config;
