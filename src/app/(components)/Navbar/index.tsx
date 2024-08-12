@@ -10,10 +10,15 @@ import React from 'react'
 const Navbar = () => {
     
   const dispatch = useAppDispatch();
+
   const isSideBarCollapsed = useAppSelector(
     (state) => state.global.isSideBarCollapse
   );
   
+  const isDarkMode = useAppSelector(
+    (state) => state.global.isDarkMode
+  );
+
   const toggleSidebar = () => {
     dispatch(setIsSideBarCollapsed(!isSideBarCollapsed));
   };
@@ -62,7 +67,7 @@ const Navbar = () => {
                         image
                     </div>
                     <span className={`font-semibold`}>
-                        Ed Roh
+                        Zeke
                     </span>
                 </div>
             </div>

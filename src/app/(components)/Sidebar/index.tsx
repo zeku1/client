@@ -1,8 +1,11 @@
 "use client";
 import { useAppDispatch, useAppSelector } from '@/app/redux';
 import { setIsSideBarCollapsed } from '@/state';
-import { Menu } from 'lucide-react'
+import SidebarLink from '@/app/(components)/Sidebar/link';
+import { Layout, Menu } from 'lucide-react'
 import React from 'react'
+
+
 
 
 const Sidebar = () => {
@@ -20,10 +23,12 @@ const Sidebar = () => {
   } bg-white transition-all duration-300 overflow-hidden h-full shadow-md z-40`;
 
   return (
-    <div> 
-      <div className={sidebarClassNames}>
+    <div className={sidebarClassNames}> 
+      <div className={`flex gap-3 justify-between md:justify-normal items-center pt-8 ${
+          isSideBarCollapsed ?  "px-5" : "px-8"
+        }`}>
         <div>logo</div>
-        <h1 className={'font-extrabold text-2xl'}>ZEKESTOCK</h1>
+        <h1 className={`${ isSideBarCollapsed ? "hidden" : "block" } font-extrabold text-2xl`}>ZEKESTOCK</h1>
       
         <button 
           className={`md:hidden px-3 bg-gray-100 rounded-full hover:bg-blue-100`}
@@ -35,7 +40,7 @@ const Sidebar = () => {
 
       {/* LINKS */}
       <div className={`flex-frow mt-8`}>
-
+        <SidebarLink href="/dashboard" icon={Layout} label="Dashboard" isCollapsed={isSideBarCollapsed}/>
       </div>
 
       {/* FOOTER */}
